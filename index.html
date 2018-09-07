@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crytofolio</title>
+  <script src="app.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+  <link rel="stylesheet" type="text/css" href="node_modules/bulma/css/bulma.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Cryptofolio - Your Cryptocurrency Tracker</h1>
+  </main>
+
+  <form id="main_form">
+    <div class="field has-addons has-addons-centered">
+      <p class="control">
+        <span class="select">
+          <select id="currency">
+            <option>Bitcoin</option>
+            <option>Litecoin</option>
+            <option>Ethereum</option>
+          </select>
+        </span>
+      </p>
+      <p class="control">
+        <input id="amount" class="input has-text-centered" type="number" min="0" step="0.01" placeholder="Amount">
+        <span class="unit">BTC</span>
+      </p>
+      <p class="control">
+
+        <input id="total_price" class="input has-text-centered" type="number" min="0" autofocus="autofocus" placeholder="Total Price">
+        <span class="unit">$</span>
+      </p>
+      <p class="control">
+        <button class="button is-success" type="submit">Add Coin</button>
+      </p>
+    </div>
+  </form>
+
+  <div id="folio">
+    <!-- <div id="btc"class="tile is-ancestor">
+
+    </div>
+
+    <div id="ltc"class="tile is-ancestor">
+
+    </div>
+
+    <div id="eth"class="tile is-ancestor">
+
+    </div> -->
+  </div>
+</body>
+</html>
