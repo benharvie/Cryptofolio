@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crytofolio</title>
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
   <link rel="stylesheet" type="text/css" href="node_modules/bulma/css/bulma.css" />
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main>
@@ -15,25 +15,40 @@
   </main>
 
   <form id="main_form">
-    <div class="field has-addons has-addons-centered">
-      <p class="control">
-        <span class="select">
-          <select id="currency">
-            <option>Bitcoin</option>
-            <option>Litecoin</option>
-            <option>Ethereum</option>
-          </select>
-        </span>
-      </p>
-      <p class="control">
-        <input id="amount" class="input has-text-centered" type="number" min="0" step="0.01" placeholder="Amount">
-        <span class="unit">BTC</span>
-      </p>
-      <p class="control">
+    <!-- <section class="crypto_section"> -->
+      <div class="field has-addons has-addons-centered">
+        <p class="control">
+          <span class="select">
+            <select id="crypto_currency">
+              <option>Bitcoin</option>
+              <option>Litecoin</option>
+              <option>Ethereum</option>
+            </select>
+          </span>
+        </p>
 
-        <input id="total_price" class="input has-text-centered" type="number" min="0" autofocus="autofocus" placeholder="Total Price">
-        <span class="unit">$</span>
-      </p>
+        <p class="control">
+          <input id="amount" class="input has-text-centered" type="number" min="0" step="0.01" placeholder="Amount">
+          <span id="crypto_unit" class="unit">BTC</span>
+        </p>
+      <!-- </section> -->
+
+      <!-- <section class="global_section"> -->
+        <p class="control">
+          <span class="select">
+            <select id="global_currency">
+              <option>USD</option>
+              <option>GBP</option>
+            </select>
+          </span>
+        </p>
+
+        <p class="control">
+          <input id="total_price" class="input has-text-centered" type="number" min="0" autofocus="autofocus" placeholder="Total Price">
+          <span id="global_unit" class="unit">$</span>
+        </p>
+      <!-- </section> -->
+
       <p class="control">
         <button class="button is-success" type="submit">Add Coin</button>
       </p>
@@ -41,17 +56,7 @@
   </form>
 
   <div id="folio">
-    <!-- <div id="btc"class="tile is-ancestor">
 
-    </div>
-
-    <div id="ltc"class="tile is-ancestor">
-
-    </div>
-
-    <div id="eth"class="tile is-ancestor">
-
-    </div> -->
   </div>
 </body>
 </html>

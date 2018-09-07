@@ -1,0 +1,61 @@
+html, body {
+  background-color: #fafafa;
+}
+
+h1 {
+  font-size: 2em;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.unit {
+  position: absolute;
+  display: block;
+  left: 10px; top: 6px;
+  z-index: 9;
+  font-size: 1em;
+}
+
+#main_form {
+  align-content: center;
+}
+
+#folio {
+  display: inline-block;
+  align-content: center;
+}
+
+#Bitcoin, #Litecoin, #Ethereum {
+  /* border: 1px solid #C0C0C0; */
+  padding:0.3em 0.5em;
+  margin:1em;
+  display:inline-block;
+}
+
+#Bitcoin {
+  border: 1px solid #ffc700;
+}
+
+#Litecoin {
+  border: 1px solid #07b3f7;
+}
+
+#Ethereum {
+  border: 1px solid #33c92e;
+}
+
+#Bitcoin .title {
+  color: #ffc700;
+}
+
+#Litecoin .title {
+  color: #07b3f7;
+}
+
+#Ethereum .title {
+  color: #33c92e;
+}
+
+.heading {
+  font-size: 1em;
+}
