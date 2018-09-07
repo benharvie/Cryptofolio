@@ -18,6 +18,8 @@ h1 {
 
 #main_form {
   align-content: center;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #C0C0C0;
 }
 
 #folio {
@@ -58,4 +60,9 @@ h1 {
 
 .heading {
   font-size: 1em;
+}
+
+#stats {
+  border-bottom: 1px solid #C0C0C0;
+  padding: 1em;
 }

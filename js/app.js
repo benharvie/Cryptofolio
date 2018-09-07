@@ -73,13 +73,13 @@ const handleSubmit = function() {
                        <br>
                        <p class="heading"><b>Date:</b> ${(new Date()).toString().split(' ').splice(1,3).join(' ')}
                        <br>
-                       <b>Amount: ${currencySymbol(this.global_currency.value)}</b> ${roundToTwo(this.amount.value)}
+                       <b>Amount:</b> ${roundToTwo(this.amount.value)}
                        <br>
                        <b>Purchase value:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(this.total_price.value)}
                        <br>
                        <b>Price paid/coin:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo((this.total_price.value / this.amount.value))}
                        <br>
-                       <b>Value at time:</b> ${currencySymbol(this.global_currency.value)}${coinPrice}
+                       <b>Market value/coin:</b> ${currencySymbol(this.global_currency.value)}${coinPrice}
                        <br>
                        <b>Profit:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(coinPrice - (this.total_price.value / this.amount.value))}</p>
                        <br>

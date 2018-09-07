@@ -15,45 +15,76 @@
   </main>
 
   <form id="main_form">
-    <!-- <section class="crypto_section"> -->
-      <div class="field has-addons has-addons-centered">
-        <p class="control">
-          <span class="select">
-            <select id="crypto_currency">
-              <option>Bitcoin</option>
-              <option>Litecoin</option>
-              <option>Ethereum</option>
-            </select>
-          </span>
-        </p>
+    <div class="field has-addons has-addons-centered">
+      <p class="control">
+        <span class="select">
+          <select id="crypto_currency">
+            <option>Bitcoin</option>
+            <option>Litecoin</option>
+            <option>Ethereum</option>
+          </select>
+        </span>
+      </p>
 
-        <p class="control">
-          <input id="amount" class="input has-text-centered" type="number" min="0" step="0.01" placeholder="Amount">
-          <span id="crypto_unit" class="unit">BTC</span>
-        </p>
-      <!-- </section> -->
+      <p class="control">
+        <input id="amount" class="input has-text-centered" type="number" min="0" step="0.01" placeholder="Amount">
+        <span id="crypto_unit" class="unit">BTC</span>
+      </p>
 
-      <!-- <section class="global_section"> -->
-        <p class="control">
-          <span class="select">
-            <select id="global_currency">
-              <option>USD</option>
-              <option>GBP</option>
-            </select>
-          </span>
-        </p>
+      <p class="control">
+        <span class="select">
+          <select id="global_currency">
+            <option>USD</option>
+            <option>GBP</option>
+          </select>
+        </span>
+      </p>
 
-        <p class="control">
-          <input id="total_price" class="input has-text-centered" type="number" min="0" autofocus="autofocus" placeholder="Total Price">
-          <span id="global_unit" class="unit">$</span>
-        </p>
-      <!-- </section> -->
+      <p class="control">
+        <input id="total_price" class="input has-text-centered" type="number" min="0" autofocus="autofocus" placeholder="Total Price">
+        <span id="global_unit" class="unit">$</span>
+      </p>
 
       <p class="control">
         <button class="button is-success" type="submit">Add Coin</button>
       </p>
     </div>
   </form>
+
+  <div id="stats">
+    <nav class="level is-mobile">
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total Purchase Value</p>
+          <p class="title">$13,456</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Total Profit</p>
+          <p class="title">$123</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Bitcoin</p>
+          <p class="title">2.57</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Litecoin</p>
+          <p class="title">164.24</p>
+        </div>
+      </div>
+      <div class="level-item has-text-centered">
+        <div>
+          <p class="heading">Ethereum</p>
+          <p class="title">17.48</p>
+        </div>
+      </div>
+    </nav>
+  </div>
 
   <div id="folio">
 
