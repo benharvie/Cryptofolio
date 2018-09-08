@@ -3,6 +3,7 @@
 // - custom date/time
 // - add sell option
 // - loop + sum total values for stats
+// - buy/sell colour coding
 
 const httpGET = function(url) {
   http = new XMLHttpRequest();
@@ -34,7 +35,7 @@ const getPrice = function(cryptoCurrency, globalCurrency) {
 const getAcronym = function(currency) {
   let acronym
   if (currency === 'Bitcoin') {
-      acronym = 'BTC';
+      acronym = 'ɃTC';
   } else if (currency === 'Litecoin') {
       acronym = 'LTC';
   } else if (currency === 'Ethereum') {
@@ -74,31 +75,51 @@ document.addEventListener('DOMContentLoaded', () => {
   selectGlobal.addEventListener('change', handleGlobalChange);
 });
 
-const handleSubmit = function() {
+// const handleSubmit = function() {
+//   event.preventDefault();
+//
+//   const newTile = document.createElement('div');
+//   const coinPrice = getPrice(this.crypto_currency.value, this.global_currency.value)
+//   newTile.className = 'level-item';
+//   newTile.id = this.crypto_currency.value
+//   newTile.innerHTML = `<p class="title">${this.crypto_currency.value}&nbsp;&nbsp;&nbsp;</p>
+//                        <br>
+//                        <br>
+//                        <p class="heading"><b>Date:</b> ${(new Date()).toString().split(' ').splice(1,3).join(' ')}
+//                        <br>
+//                        <b>Amount:</b> ${roundToTwo(this.amount.value)}
+//                        <br>
+//                        <b>Purchase value:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(this.total_price.value)}
+//                        <br>
+//                        <b>Price paid/coin:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo((this.total_price.value / this.amount.value))}
+//                        <br>
+//                        <b>Market value/coin:</b> ${currencySymbol(this.global_currency.value)}${coinPrice}
+//                        <br>
+//                        <b>Profit:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(coinPrice - (this.total_price.value / this.amount.value))}</p>
+//                        <br>
+//                       `
+//
+//   const formResult = document.querySelector('#folio');
+//   formResult.appendChild(newTile);
+// }
+const handleSubmit = function() { // Table
   event.preventDefault();
 
-  const newTile = document.createElement('div');
+  const newTile = document.createElement('tr');
   const coinPrice = getPrice(this.crypto_currency.value, this.global_currency.value)
-  newTile.className = 'level-item';
-  newTile.id = this.crypto_currency.value
-  newTile.innerHTML = `<p class="title">${this.crypto_currency.value}&nbsp;&nbsp;&nbsp;</p>
-                       <br>
-                       <br>
-                       <p class="heading"><b>Date:</b> ${(new Date()).toString().split(' ').splice(1,3).join(' ')}
-                       <br>
-                       <b>Amount:</b> ${roundToTwo(this.amount.value)}
-                       <br>
-                       <b>Purchase value:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(this.total_price.value)}
-                       <br>
-                       <b>Price paid/coin:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo((this.total_price.value / this.amount.value))}
-                       <br>
-                       <b>Market value/coin:</b> ${currencySymbol(this.global_currency.value)}${coinPrice}
-                       <br>
-                       <b>Profit:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(coinPrice - (this.total_price.value / this.amount.value))}</p>
-                       <br>
+  // newTile.className = 'level-item';
+  // newTile.id = this.crypto_currency.value
+  newTile.innerHTML = `<td>${(new Date()).toString().split(' ').splice(1,3).join(' ')}</td>
+                       <td>${this.crypto_currency.value}</td>
+                       <td>${roundToTwo(this.amount.value)}</td>
+                       <td>${currencySymbol(this.global_currency.value)}${roundToTwo(this.total_price.value)}</td>
+                       <td>${currencySymbol(this.global_currency.value)}${roundToTwo((this.total_price.value / this.amount.value))}</td>
+                       <td>${currencySymbol(this.global_currency.value)}${coinPrice}</td>
+                       <td>${currencySymbol(this.global_currency.value)}${roundToTwo(coinPrice - (this.total_price.value / this.amount.value))}</p></td>
+                       </tr>
                       `
 
-  const formResult = document.querySelector('#folio');
+  const formResult = document.querySelector('table');
   formResult.appendChild(newTile);
 }
 

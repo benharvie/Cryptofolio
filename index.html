@@ -39,19 +39,19 @@
 
       <p class="control">
         <input id="amount" class="input has-text-centered" type="number" min="0" step="0.01" placeholder="Amount">
-        <span id="crypto_unit" class="unit">BTC</span>
+        <span id="crypto_unit" class="unit">ɃTC</span>
       </p>
 
       <p class="control">
         <input id="total_price" class="input has-text-centered" type="number" min="0" autofocus="autofocus" placeholder="Total Price">
-        <span id="global_unit" class="unit">$</span>
+        <span id="global_unit" class="unit">£</span>
       </p>
 
       <p class="control">
         <span class="select">
           <select id="global_currency">
-            <option>USD</option>
             <option>GBP</option>
+            <option disabled>USD</option>
           </select>
         </span>
       </p>
@@ -73,13 +73,13 @@
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Total Purchase Value</p>
-          <p class="title">$13,456.06</p>
+          <p class="title">£13,456.06</p>
         </div>
       </div>
       <div class="level-item has-text-centered">
         <div>
           <p class="heading">Total Profit</p>
-          <p class="title">$3123.85</p>
+          <p class="title">£3123.85</p>
         </div>
       </div>
       <div class="level-item has-text-centered">
@@ -104,7 +104,21 @@
   </div>
 
   <div id="folio">
+    <table class="table is-bordered is-striped is-fullwidth">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Cryptocurrency</th>
+          <th>Amount</th>
+          <th>Purchase Value</th>
+          <th>Price Paid/Coin</th>
+          <th>Market Value/Coin</th>
+          <th>Profit</th>
+        </tr>
+      </thead>
+      <tbody>
 
-  </div>
-</body>
-</html>
+      </tbody>
+    </div>
+  </body>
+  </html>

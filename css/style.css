@@ -34,8 +34,11 @@ h1 {
 }
 
 #folio {
-  display: inline-block;
+  display:flex;
   align-content: center;
+  padding-top: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 #Bitcoin, #Litecoin, #Ethereum {
