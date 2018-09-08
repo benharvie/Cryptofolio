@@ -2,8 +2,9 @@
 // - import from txid - value/time - https://blockchain.info/rawtx/65a7b3fe3753fd7ce96b1debbd406530a9ce0573a00f6aaa8bfc0e863cef2e9f
 // - custom date/time
 // - add sell option
-// - loop + sum total values for stats
 // - buy/sell colour coding
+// - loop + sum total values for stats
+// - delete transaction button
 
 const httpGET = function(url) {
   http = new XMLHttpRequest();
@@ -75,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
   selectGlobal.addEventListener('change', handleGlobalChange);
 });
 
-// const handleSubmit = function() {
+// const handleSubmit = function() { // OLD DISPLAY
 //   event.preventDefault();
 //
 //   const newTile = document.createElement('div');
@@ -102,13 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
 //   const formResult = document.querySelector('#folio');
 //   formResult.appendChild(newTile);
 // }
+
 const handleSubmit = function() { // Table
   event.preventDefault();
 
   const newTile = document.createElement('tr');
   const coinPrice = getPrice(this.crypto_currency.value, this.global_currency.value)
-  // newTile.className = 'level-item';
-  // newTile.id = this.crypto_currency.value
   newTile.innerHTML = `<td>${(new Date()).toString().split(' ').splice(1,3).join(' ')}</td>
                        <td>${this.crypto_currency.value}</td>
                        <td>${roundToTwo(this.amount.value)}</td>
@@ -116,6 +116,7 @@ const handleSubmit = function() { // Table
                        <td>${currencySymbol(this.global_currency.value)}${roundToTwo((this.total_price.value / this.amount.value))}</td>
                        <td>${currencySymbol(this.global_currency.value)}${coinPrice}</td>
                        <td>${currencySymbol(this.global_currency.value)}${roundToTwo(coinPrice - (this.total_price.value / this.amount.value))}</p></td>
+                       <td><a class="delete is-medium"></a></td>
                        </tr>
                       `
 

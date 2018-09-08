@@ -41,8 +41,18 @@ h1 {
   padding-right: 2em;
 }
 
+.heading {
+  font-size: 1em;
+}
+
+#stats {
+  border-bottom: 1px solid #C0C0C0;
+  padding: 2em;
+  margin-bottom: 1em;
+}
+
+/* OLD DISPLAY
 #Bitcoin, #Litecoin, #Ethereum {
-  /* border: 1px solid #C0C0C0; */
   padding:0.3em 0.5em;
   margin:1em;
   display:inline-block;
@@ -70,14 +80,4 @@ h1 {
 
 #Ethereum .title {
   color: #33c92e;
-}
-
-.heading {
-  font-size: 1em;
-}
-
-#stats {
-  border-bottom: 1px solid #C0C0C0;
-  padding: 2em;
-  margin-bottom: 1em;
-}
+} */
