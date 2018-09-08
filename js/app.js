@@ -64,7 +64,7 @@ function roundToTwo(value) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('#main_form');
+  const form = document.querySelector('#purchase_form');
   form.addEventListener('submit', handleSubmit);
 
   const selectCrypto = document.querySelector('#crypto_currency')
