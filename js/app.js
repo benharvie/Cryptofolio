@@ -126,6 +126,25 @@ const handleSubmit = function() { // Apply to table
   const formResult = document.querySelector('table');
   formResult.appendChild(newTile);
 
+  const totalPurchaseValue = document.querySelector('#total_purchase_value')
+  totalPurchaseValue.textContent = Number(totalPurchaseValue.textContent.replace('£', '')) + Number(roundToTwo(this.total_price.value))
+  totalPurchaseValue.textContent = '£' + totalPurchaseValue.textContent
+
+  const totalProfitValue = document.querySelector('#total_profit')
+  totalProfitValue.textContent = Number(totalProfitValue.textContent.replace('£', '')) + Number(roundToTwo(coinPrice - (this.total_price.value / this.amount.value)));
+  totalProfitValue.textContent = '£' + totalProfitValue.textContent;
+
+  if (this.crypto_currency.value === 'Bitcoin') {
+      const btcTotal = document.querySelector('#total_btc');
+      btcTotal.textContent = Number(this.amount.value) + Number(btcTotal.textContent);
+  } else if (this.crypto_currency.value === 'Litecoin') {
+      const ltcTotal = document.querySelector('#total_ltc')
+      ltcTotal.textContent = Number(this.amount.value) + Number(ltcTotal.textContent);
+  } else if (this.crypto_currency.value === 'Ethereum') {
+      const ethTotal = document.querySelector('#total_eth')
+      ethTotal.textContent = Number(this.amount.value) + Number(ethTotal.textContent);
+  }
+
   this.reset();
 }
 
