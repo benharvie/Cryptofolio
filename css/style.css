@@ -50,34 +50,3 @@ h1 {
   padding: 2em;
   margin-bottom: 1em;
 }
-
-/* OLD DISPLAY
-#Bitcoin, #Litecoin, #Ethereum {
-  padding:0.3em 0.5em;
-  margin:1em;
-  display:inline-block;
-}
-
-#Bitcoin {
-  border: 1px solid #ffc700;
-}
-
-#Litecoin {
-  border: 1px solid #07b3f7;
-}
-
-#Ethereum {
-  border: 1px solid #33c92e;
-}
-
-#Bitcoin .title {
-  color: #ffc700;
-}
-
-#Litecoin .title {
-  color: #07b3f7;
-}
-
-#Ethereum .title {
-  color: #33c92e;
-} */

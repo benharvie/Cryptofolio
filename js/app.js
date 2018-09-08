@@ -58,7 +58,7 @@ const currencySymbol = function(currency) {
 
 const getTxInfo = function(txID) {
   const info = JSON.parse(httpGET(`https://cors.io/?https://blockchain.info/rawtx/${txID}`));
-  return { value: (info['out'][0].value / 100000000), time: new Date(info['time'] * 1000) }; // NEED TO REFACTOR, NOT EPOCH?
+  return { amount: (info['out'][0].value / 100000000), time: new Date(info['time'] * 1000) }; // NEED TO REFACTOR, NOT EPOCH?
 }
 
 function roundToTwo(value) {
@@ -69,11 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#purchase_form');
   form.addEventListener('submit', handleSubmit);
 
-  const selectCrypto = document.querySelector('#crypto_currency')
+  const selectCrypto = document.querySelector('#crypto_currency');
   selectCrypto.addEventListener('change', handleCryptoChange);
 
-  const selectGlobal = document.querySelector('#global_currency')
+  const selectGlobal = document.querySelector('#global_currency');
   selectGlobal.addEventListener('change', handleGlobalChange);
+
+  const selectTxForm = document.querySelector('#tx_form');
+  selectTxForm.addEventListener('submit', handleTxSubmit);
 });
 
 // const handleSubmit = function() { // OLD DISPLAY
@@ -122,6 +125,19 @@ const handleSubmit = function() { // Apply to table
 
   const formResult = document.querySelector('table');
   formResult.appendChild(newTile);
+
+  this.reset();
+}
+
+const handleTxSubmit = function() {
+  event.preventDefault();
+
+  const txID = document.querySelector('#tx_id');
+  const info = getTxInfo(txID.value);
+  // const time = info.time;
+
+  document.querySelector('#amount').value = roundToTwo(info.amount);
+  document.querySelector('#total_price').value = roundToTwo(getPrice('Bitcoin', 'GBP') * info.amount);
 
   this.reset();
 }
