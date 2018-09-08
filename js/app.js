@@ -1,7 +1,15 @@
+// FUTURE FEATURES
+// - import from txid - value/time - https://blockchain.info/rawtx/65a7b3fe3753fd7ce96b1debbd406530a9ce0573a00f6aaa8bfc0e863cef2e9f
+// - custom date/time
+
+const httpGET = function(url) {
+  http.open('GET', url, false);
+  http.send();
+  return http.responseText;
+}
+
 const getPrice = function(cryptoCurrency, globalCurrency) {
   let currencyID
-  const http = new XMLHttpRequest();
-
   if (cryptoCurrency === 'Bitcoin') {
       currencyID = 1;
   } else if (cryptoCurrency === 'Litecoin') {
@@ -10,15 +18,12 @@ const getPrice = function(cryptoCurrency, globalCurrency) {
       currencyID = 1027;
   }
 
-  http.open('GET', `https://api.coinmarketcap.com/v2/ticker/${currencyID}/?convert=GBP&limit=10/`, false);
-  http.send();
-  response = JSON.parse(http.responseText);
-
   let price
+  priceInfo = JSON.parse(httpGET(`https://api.coinmarketcap.com/v2/ticker/${currencyID}/?convert=GBP&limit=10/`));
   if (globalCurrency === 'USD') {
-    price = roundToTwo(response.data.quotes.USD.price);
+    price = roundToTwo(priceInfo.data.quotes.USD.price);
   } else if (globalCurrency === 'GBP') {
-    price = roundToTwo(response.data.quotes.GBP.price);
+    price = roundToTwo(priceInfo.data.quotes.GBP.price);
   }
   return price;
 }
@@ -44,6 +49,10 @@ const currencySymbol = function(currency) {
     symbol = '£';
   }
   return symbol
+}
+
+const getTxInfo = function(txID) {
+
 }
 
 function roundToTwo(value) {
