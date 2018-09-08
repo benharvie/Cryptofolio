@@ -75,5 +75,6 @@ h1 {
 
 #stats {
   border-bottom: 1px solid #C0C0C0;
-  padding: 1em;
+  padding: 2em;
+  margin-bottom: 1em;
 }

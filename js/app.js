@@ -81,7 +81,7 @@ const handleSubmit = function() {
   const coinPrice = getPrice(this.crypto_currency.value, this.global_currency.value)
   newTile.className = 'level-item';
   newTile.id = this.crypto_currency.value
-  newTile.innerHTML = `<p class="title">${this.crypto_currency.value}&nbsp;&nbsp;&nbsp;/p>
+  newTile.innerHTML = `<p class="title">${this.crypto_currency.value}&nbsp;&nbsp;&nbsp;</p>
                        <br>
                        <br>
                        <p class="heading"><b>Date:</b> ${(new Date()).toString().split(' ').splice(1,3).join(' ')}
