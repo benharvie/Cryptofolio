@@ -1,8 +1,11 @@
 // FUTURE FEATURES
 // - import from txid - value/time - https://blockchain.info/rawtx/65a7b3fe3753fd7ce96b1debbd406530a9ce0573a00f6aaa8bfc0e863cef2e9f
 // - custom date/time
+// - add sell option
+// - loop + sum total values for stats
 
 const httpGET = function(url) {
+  http = new XMLHttpRequest();
   http.open('GET', url, false);
   http.send();
   return http.responseText;
@@ -19,7 +22,7 @@ const getPrice = function(cryptoCurrency, globalCurrency) {
   }
 
   let price
-  priceInfo = JSON.parse(httpGET(`https://api.coinmarketcap.com/v2/ticker/${currencyID}/?convert=GBP&limit=10/`));
+  const priceInfo = JSON.parse(httpGET(`https://api.coinmarketcap.com/v2/ticker/${currencyID}/?convert=GBP&limit=10/`));
   if (globalCurrency === 'USD') {
     price = roundToTwo(priceInfo.data.quotes.USD.price);
   } else if (globalCurrency === 'GBP') {
@@ -52,7 +55,8 @@ const currencySymbol = function(currency) {
 }
 
 const getTxInfo = function(txID) {
-
+  const info = JSON.parse(httpGET(`https://cors.io/?https://blockchain.info/rawtx/${txID}`));
+  return { value: (info['out'][0].value / 100000000), time: new Date(info['time'] * 1000) }; // NEED TO REFACTOR, NOT EPOCH?
 }
 
 function roundToTwo(value) {
@@ -77,7 +81,7 @@ const handleSubmit = function() {
   const coinPrice = getPrice(this.crypto_currency.value, this.global_currency.value)
   newTile.className = 'level-item';
   newTile.id = this.crypto_currency.value
-  newTile.innerHTML = `<p class="title">${this.crypto_currency.value}&nbsp&nbsp&nbsp</p>
+  newTile.innerHTML = `<p class="title">${this.crypto_currency.value}&nbsp;&nbsp;&nbsp;/p>
                        <br>
                        <br>
                        <p class="heading"><b>Date:</b> ${(new Date()).toString().split(' ').splice(1,3).join(' ')}
@@ -105,6 +109,7 @@ const handleCryptoChange = function() {
 }
 
 const handleGlobalChange = function() {
+  console.log(getTxInfo('f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16'));
   const currency = document.querySelector('#global_currency');
   const unit = document.querySelector('#global_unit');
   unit.textContent = currencySymbol(global_currency.value);

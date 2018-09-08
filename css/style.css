@@ -16,10 +16,21 @@ h1 {
   font-size: 1em;
 }
 
+#tx_id {
+  text-align: center;
+  width: 38em;
+}
+
 #main_form {
   align-content: center;
-  padding-bottom: 1em;
+  padding-bottom: 1.5em;
   border-bottom: 1px solid #C0C0C0;
+}
+
+.submit_buttons {
+  margin:0;
+  display: inline-block;
+  align-items: center;
 }
 
 #folio {
