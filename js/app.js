@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //   formResult.appendChild(newTile);
 // }
 
-const handleSubmit = function() { // Table
+const handleSubmit = function() { // Apply to table
   event.preventDefault();
 
   const newTile = document.createElement('tr');
@@ -122,6 +122,8 @@ const handleSubmit = function() { // Table
 
   const formResult = document.querySelector('table');
   formResult.appendChild(newTile);
+
+  this.reset();
 }
 
 const handleCryptoChange = function() {
