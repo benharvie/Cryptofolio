@@ -1,10 +1,9 @@
 // FUTURE FEATURES
-// - import from txid - value/time - https://blockchain.info/rawtx/65a7b3fe3753fd7ce96b1debbd406530a9ce0573a00f6aaa8bfc0e863cef2e9f
 // - custom date/time
 // - add sell option
 // - buy/sell colour coding
-// - loop + sum total values for stats
 // - delete transaction button
+// - format money: https://www.npmjs.com/package/money-formatter
 
 const httpGET = function(url) {
   http = new XMLHttpRequest();
@@ -61,7 +60,7 @@ const getTxInfo = function(txID) {
   return { amount: (info['out'][0].value / 100000000), time: new Date(info['time'] * 1000) }; // NEED TO REFACTOR, NOT EPOCH?
 }
 
-function roundToTwo(value) {
+const roundToTwo = function(value) {
   return(Math.round(value * 100) / 100);
 }
 
@@ -79,40 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
   selectTxForm.addEventListener('submit', handleTxSubmit);
 });
 
-// const handleSubmit = function() { // OLD DISPLAY
-//   event.preventDefault();
-//
-//   const newTile = document.createElement('div');
-//   const coinPrice = getPrice(this.crypto_currency.value, this.global_currency.value)
-//   newTile.className = 'level-item';
-//   newTile.id = this.crypto_currency.value
-//   newTile.innerHTML = `<p class="title">${this.crypto_currency.value}&nbsp;&nbsp;&nbsp;</p>
-//                        <br>
-//                        <br>
-//                        <p class="heading"><b>Date:</b> ${(new Date()).toString().split(' ').splice(1,3).join(' ')}
-//                        <br>
-//                        <b>Amount:</b> ${roundToTwo(this.amount.value)}
-//                        <br>
-//                        <b>Purchase value:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(this.total_price.value)}
-//                        <br>
-//                        <b>Price paid/coin:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo((this.total_price.value / this.amount.value))}
-//                        <br>
-//                        <b>Market value/coin:</b> ${currencySymbol(this.global_currency.value)}${coinPrice}
-//                        <br>
-//                        <b>Profit:</b> ${currencySymbol(this.global_currency.value)}${roundToTwo(coinPrice - (this.total_price.value / this.amount.value))}</p>
-//                        <br>
-//                       `
-//
-//   const formResult = document.querySelector('#folio');
-//   formResult.appendChild(newTile);
-// }
-
-const handleSubmit = function() { // Apply to table
+const handleSubmit = function() { // Apply to table - Cleanup, assign repeated values to variables first, then this.reset()
   event.preventDefault();
 
-  const newTile = document.createElement('tr');
+  const dataTable = document.createElement('tr');
   const coinPrice = getPrice(this.crypto_currency.value, this.global_currency.value)
-  newTile.innerHTML = `<td>${(new Date()).toString().split(' ').splice(1,3).join(' ')}</td>
+  dataTable.innerHTML = `<td>${(new Date()).toString().split(' ').splice(1,3).join(' ')}</td>
                        <td>${this.crypto_currency.value}</td>
                        <td>${roundToTwo(this.amount.value)}</td>
                        <td>${currencySymbol(this.global_currency.value)}${roundToTwo(this.total_price.value)}</td>
@@ -124,7 +95,7 @@ const handleSubmit = function() { // Apply to table
                       `
 
   const formResult = document.querySelector('table');
-  formResult.appendChild(newTile);
+  formResult.appendChild(dataTable);
 
   const totalPurchaseValue = document.querySelector('#total_purchase_value')
   totalPurchaseValue.textContent = Number(totalPurchaseValue.textContent.replace('£', '')) + Number(roundToTwo(this.total_price.value))
@@ -136,13 +107,13 @@ const handleSubmit = function() { // Apply to table
 
   if (this.crypto_currency.value === 'Bitcoin') {
       const btcTotal = document.querySelector('#total_btc');
-      btcTotal.textContent = Number(this.amount.value) + Number(btcTotal.textContent);
+      btcTotal.textContent = roundToTwo(Number(this.amount.value) + Number(btcTotal.textContent));
   } else if (this.crypto_currency.value === 'Litecoin') {
       const ltcTotal = document.querySelector('#total_ltc')
-      ltcTotal.textContent = Number(this.amount.value) + Number(ltcTotal.textContent);
+      ltcTotal.textContent = roundToTwo(Number(this.amount.value) + Number(ltcTotal.textContent));
   } else if (this.crypto_currency.value === 'Ethereum') {
       const ethTotal = document.querySelector('#total_eth')
-      ethTotal.textContent = Number(this.amount.value) + Number(ethTotal.textContent);
+      ethTotal.textContent = roundToTwo(Number(this.amount.value) + Number(ethTotal.textContent));
   }
 
   this.reset();
@@ -150,15 +121,19 @@ const handleSubmit = function() { // Apply to table
 
 const handleTxSubmit = function() {
   event.preventDefault();
+  // const txSubmitBtn = document.querySelector('#tx_submit') // Loading button concept
+  // txSubmitBtn.classList.add('is-loading');
 
   const txID = document.querySelector('#tx_id');
   const info = getTxInfo(txID.value);
   // const time = info.time;
 
+  this.reset(); // reset before grabbing info, quicker
+
   document.querySelector('#amount').value = roundToTwo(info.amount);
   document.querySelector('#total_price').value = roundToTwo(getPrice('Bitcoin', 'GBP') * info.amount);
 
-  this.reset();
+  // txSubmitBtn.classList.remove('is-loading');
 }
 
 const handleCryptoChange = function() {

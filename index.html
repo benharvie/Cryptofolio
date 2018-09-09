@@ -20,7 +20,7 @@
     </p>
 
     <p class="control">
-      <button class="button is-info is-small" type="submit">Import From Tx ID</button>
+      <button id="tx_submit" class="button is-info is-small" type="submit">Import From Tx ID</button>
     </p>
   </form>
 
@@ -43,7 +43,7 @@
       </p>
 
       <p class="control">
-        <input id="total_price" class="input has-text-centered" type="number" min="0" autofocus="autofocus" placeholder="Total Price">
+        <input id="total_price" class="input has-text-centered" type="number" min="0" step="0.01" placeholder="Total Price">
         <span id="global_unit" class="unit">£</span>
       </p>
 
@@ -59,11 +59,11 @@
     </div>
     <div id="submit_buttons" class="field has-addons has-addons-centered">
       <p class="control">
-        <button class="button is-success" type="submit">Add Purchase</button>
+        <button id="purchase_submit" class="button is-success" type="submit">Add Purchase</button>
       </p>
 
       <p class="control">
-        <button class="button is-danger" type="submit">Add Sell</button>
+        <button id="sell_submit" class="button is-danger" type="submit">Add Sell</button>
       </p>
     </div>
   </form>
